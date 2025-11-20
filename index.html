@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Selling Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+      :root {
+        --brand-cream: #f4f1de;
+        --brand-salmon: #e07a5f;
+        --brand-navy: #3d405b;
+        --brand-green: #81b29a;
+        --brand-yellow: #f2cc8f;
+      }
+      .font-titan-one {
+        font-family: 'Titan One', cursive;
+      }
+      .font-montserrat {
+        font-family: 'Montserrat', sans-serif;
+      }
+    </style>
+    <style>
+      .custom-underline {
+        position: relative;
+      }
+      .custom-underline::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 3px;
+        background: #e07a5f;
+        border-radius: 2px;
+        opacity: 0;
+        transition: opacity 0.2s, transform 0.2s;
+        transform: scaleX(0.7);
+      }
+      .custom-underline:hover::after {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+      .custom-cursor {
+        width: 12px;
+        height: 12px;
+        border: 2px solid var(--brand-salmon);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.5s ease;
+        transform: translate(-50%, -50%);
+      }
+      .custom-cursor.filled {
+        background-color: var(--brand-salmon);
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+      .hero-section {
+        cursor: none;
+        transition: cursor 0.3s ease;
+      }
+      .hero-section * {
+        cursor: none !important;
+      }
+      .hero-section img {
+        transition: filter 0.3s ease;
+      }
+      .hero-section img:hover {
+        filter: brightness(0.85);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col overflow-x-hidden" style="background-color: var(--brand-navy);">
+    <div class="custom-cursor" id="customCursor"></div>
+    <main class="flex-1 w-full">
+      <section class="hero-section w-full flex flex-col md:flex-row items-stretch justify-between gap-8 h-[80vh] rounded-b-3xl z-10 relative" style="background-color: var(--brand-cream);">
+        <!-- Left column: Add your content here -->
+        <div class="flex-1 flex flex-col items-start justify-center h-full ml-6 md:ml-12">
+          <nav class="flex gap-8 mb-8 mt-2">
+            <a href="#about" class="font-bold text-lg text-[#3d405b] custom-underline tracking-wide">About</a>
+            <a href="#pricing" class="font-bold text-lg text-[#3d405b] custom-underline tracking-wide">Pricing</a>
+            <a href="#contact" class="font-bold text-lg text-[#3d405b] custom-underline tracking-wide">Contact</a>
+          </nav>
+          <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 font-titan-one leading-tight drop-shadow-lg">
+            Buying Cars<br />
+            <span class="relative inline-block">
+              <span class="z-10 relative">Should Not</span>
+              <span class="absolute left-0 bottom-0 w-full h-3 md:h-4 bg-[#e07a5f] rounded-md -z-0" style="opacity:0.6;"></span>
+            </span><br />
+            Be Difficult
+          </h1>
+          <div class="flex gap-4 mt-2">
+            <a href="#" class="px-7 py-3 rounded-md font-bold text-white bg-[#e07a5f] hover:bg-[#3d405b] transition-colors duration-200 text-lg tracking-wide" style="box-shadow:none;">Get the Course</a>
+            <a href="#" class="px-7 py-3 rounded-md font-bold text-[#3d405b] bg-[#f4f1de] border-2 border-[#3d405b] hover:bg-[#f2cc8f] transition-colors duration-200 text-lg tracking-wide" style="box-shadow:none;">Learn More</a>
+          </div>
+        </div>
+        <!-- Right column -->
+        <div class="flex-1 flex items-center justify-center h-full relative hide-scrollbar" style="overflow:visible;">
+          <img src="./public/assets/hero-secondary.png" alt="Hero Secondary" class="absolute bottom-0 left-[15%] -translate-x-1/2 w-[50%] md:w-[38%] rounded-t-3xl shadow-xl object-cover" style="max-height:75%; z-index:1;" />
+          <img src="./public/assets/hero-image.png" alt="Hero" class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[70%] rounded-t-3xl shadow-xl object-cover" style="max-height:90%; z-index:2;" />
+        </div>
+      </section>
+    </main>
+    <section class="w-full h-[75vh] pt-12 z-0 relative" style="background-color: var(--brand-navy);">
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-12 font-titan-one leading-tight drop-shadow-lg relative inline-block text-center w-full" style="color: var(--brand-cream); margin-top: 32px;">
+        <span class="relative inline-block">
+          <span class="z-10 relative" style="color: var(--brand-yellow);">What We Offer</span>
+          <span class="absolute left-0 bottom-0 w-full h-3 md:h-4 rounded-md -z-0" style="background: var(--brand-salmon); opacity:0.6;"></span>
+        </span>
+      </h2>
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 px-4 md:px-0 justify-items-center">
+        <!-- Card 1 -->
+        <div class="group relative bg-[var(--brand-cream)] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 flex flex-col items-center" style="box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: 350px; height: 340px;">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6 flex-shrink-0 overflow-hidden" style="background-color: var(--brand-salmon);">
+            <i class="fa-solid fa-chalkboard-user text-3xl" style="color: var(--brand-cream); line-height: 1; padding: 0;"></i>
+          </div>
+          <h3 class="font-montserrat text-2xl font-black text-[var(--brand-navy)] mb-4 tracking-tight text-center">Realistic Practice<br/>Simulations</h3>
+          <p class="text-[var(--brand-navy)] text-base font-montserrat leading-relaxed text-center" style="opacity: 0.85;">Get hands-on experience through mock car deals. Learn to buy, negotiate, and sell in a safe environment before risking real money.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="group relative bg-[var(--brand-cream)] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 flex flex-col items-center" style="box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: 350px; height: 340px;">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background-color: var(--brand-green);">
+            <i class="fa-solid fa-list-check text-3xl" style="color: var(--brand-cream);"></i>
+          </div>
+          <h3 class="font-montserrat text-2xl font-black text-[var(--brand-navy)] mb-4 tracking-tight text-center">Step-by-Step<br/>Deal Breakdown</h3>
+          <p class="text-[var(--brand-navy)] text-base font-montserrat leading-relaxed text-center" style="opacity: 0.85;">We walk you through every stage of a real transaction—from research and inspection to negotiation and paperwork.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="group relative bg-[var(--brand-cream)] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 flex flex-col items-center" style="box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: 350px; height: 340px;">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background-color: var(--brand-yellow);">
+            <i class="fa-solid fa-chart-line text-3xl" style="color: var(--brand-navy);"></i>
+          </div>
+          <h3 class="font-montserrat text-2xl font-black text-[var(--brand-navy)] mb-4 tracking-tight text-center">Market Insight &<br/>Valuation Skills</h3>
+          <p class="text-[var(--brand-navy)] text-base font-montserrat leading-relaxed text-center" style="opacity: 0.85;">Learn to read the market like a pro. Spot undervalued listings, assess true value, and time your sales for maximum profit.</p>
+        </div>
+      </div>
+    </section>
+    <section class="w-full h-[50vh] flex items-center justify-center relative" style="background-color: var(--brand-salmon);">
+      <div class="flex flex-col items-center justify-center px-4 md:px-8 max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-6 font-titan-one leading-tight" style="color: var(--brand-cream);">
+          Ready to Master Car Deals?
+        </h2>
+        <p class="text-lg md:text-xl font-montserrat mb-8" style="color: var(--brand-cream); font-weight: 700;">
+          Join the waitlist and be the first to know when our comprehensive car buying & selling course launches. Get exclusive early-bird pricing and bonus materials!
+        </p>
+        <form class="flex flex-col md:flex-row gap-4 w-full max-w-2xl">
+          <input type="email" placeholder="Enter your email address" class="flex-1 px-6 py-4 text-lg font-montserrat" style="background-color: var(--brand-cream); color: var(--brand-navy); border: none; outline: none;" required />
+          <button type="submit" class="px-8 py-4 font-bold text-white text-lg tracking-wide font-montserrat transition-all duration-200 hover:scale-105" style="background-color: var(--brand-navy); box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+            Join Waitlist
+          </button>
+        </form>
+        <p class="text-sm font-montserrat mt-4" style="color: var(--brand-cream); opacity: 0.9;">
+          Limited spots available. No spam, just valuable car trading insights.
+        </p>
+      </div>
+    </section>
+    <section id="pricing" class="w-full min-h-[85vh] py-16 relative" style="background-color: var(--brand-navy);">
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-16 font-titan-one leading-tight drop-shadow-lg text-center" style="color: var(--brand-salmon);">
+        <span class="relative inline-block">
+          <span class="z-10 relative" style="color: var(--brand-yellow);">Unlock Your Car Trading Success</span>
+          <span class="absolute left-0 bottom-0 w-full h-3 md:h-4 rounded-md -z-0" style="background: var(--brand-salmon); opacity:0.6;"></span>
+        </span>
+      </h2>
+      <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Pricing Image -->
+        <div class="flex items-center justify-center order-2 md:order-1">
+          <img src="./public/assets/pricing-image.png" alt="Course Preview" class="w-full max-w-md rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-300" style="border: 6px solid var(--brand-salmon);" />
+        </div>
+        <!-- Pricing Card -->
+        <div class="order-1 md:order-2 flex items-center justify-center">
+          <div class="bg-[var(--brand-cream)] rounded-3xl p-10 md:p-12 w-full max-w-lg transform hover:-translate-y-2 transition-all duration-300" style="box-shadow: 0 12px 32px rgba(0,0,0,0.2);">
+            <div class="text-center mb-8">
+              <h3 class="font-titan-one text-3xl md:text-4xl mb-4" style="color: var(--brand-navy);">Complete Course</h3>
+              <div class="flex items-baseline justify-center gap-2 mb-4">
+                <span class="text-5xl md:text-6xl font-black font-montserrat" style="color: var(--brand-salmon);">$197</span>
+                <span class="text-xl font-montserrat font-bold" style="color: var(--brand-navy); opacity: 0.7;">one-time</span>
+              </div>
+              <p class="text-sm font-montserrat font-bold" style="color: var(--brand-green);">Early Bird Special - Save $100!</p>
+            </div>
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-2xl mt-1" style="color: var(--brand-green);"></i>
+                <p class="font-montserrat text-base" style="color: var(--brand-navy); font-weight: 600;">Complete video course with 40+ lessons</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-2xl mt-1" style="color: var(--brand-green);"></i>
+                <p class="font-montserrat text-base" style="color: var(--brand-navy); font-weight: 600;">Interactive deal simulations & worksheets</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-2xl mt-1" style="color: var(--brand-green);"></i>
+                <p class="font-montserrat text-base" style="color: var(--brand-navy); font-weight: 600;">Negotiation scripts & email templates</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-2xl mt-1" style="color: var(--brand-green);"></i>
+                <p class="font-montserrat text-base" style="color: var(--brand-navy); font-weight: 600;">Lifetime access & free updates</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-2xl mt-1" style="color: var(--brand-green);"></i>
+                <p class="font-montserrat text-base" style="color: var(--brand-navy); font-weight: 600;">Private community access</p>
+              </div>
+            </div>
+            <a href="#" class="block w-full px-8 py-5 rounded-xl font-bold text-white text-xl tracking-wide font-montserrat transition-all duration-200 hover:scale-105 text-center" style="background-color: var(--brand-salmon); box-shadow: 0 6px 16px rgba(224, 122, 95, 0.3);">
+              Enroll Now
+            </a>
+            <p class="text-center text-sm font-montserrat mt-4" style="color: var(--brand-navy); opacity: 0.7;">
+              30-day money-back guarantee
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="w-full py-12 rounded-t-3xl relative" style="background-color: var(--brand-cream);">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <!-- Brand Column -->
+          <div class="flex flex-col items-start">
+            <h3 class="font-titan-one text-2xl mb-4" style="color: var(--brand-navy);">Car Trading Course</h3>
+            <p class="font-montserrat text-sm" style="color: var(--brand-navy); opacity: 0.8;">Master the art of buying and selling cars with confidence.</p>
+          </div>
+          
+          <!-- Quick Links -->
+          <div class="flex flex-col items-start md:items-center">
+            <h4 class="font-montserrat font-black text-lg mb-4" style="color: var(--brand-navy);">Quick Links</h4>
+            <nav class="flex flex-col gap-2">
+              <a href="#about" class="font-montserrat font-semibold text-sm hover:text-[var(--brand-salmon)] transition-colors" style="color: var(--brand-navy);">About</a>
+              <a href="#pricing" class="font-montserrat font-semibold text-sm hover:text-[var(--brand-salmon)] transition-colors" style="color: var(--brand-navy);">Pricing</a>
+              <a href="#contact" class="font-montserrat font-semibold text-sm hover:text-[var(--brand-salmon)] transition-colors" style="color: var(--brand-navy);">Contact</a>
+            </nav>
+          </div>
+          
+          <!-- Social Links -->
+          <div class="flex flex-col items-start md:items-end">
+            <h4 class="font-montserrat font-black text-lg mb-4" style="color: var(--brand-navy);">Connect With Us</h4>
+            <div class="flex gap-4">
+              <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200" style="background-color: var(--brand-salmon);">
+                <i class="fa-brands fa-facebook-f text-lg" style="color: var(--brand-cream);"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200" style="background-color: var(--brand-salmon);">
+                <i class="fa-brands fa-twitter text-lg" style="color: var(--brand-cream);"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200" style="background-color: var(--brand-salmon);">
+                <i class="fa-brands fa-instagram text-lg" style="color: var(--brand-cream);"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div class="border-t pt-6" style="border-color: var(--brand-navy); opacity: 0.2;">
+          <p class="text-center font-montserrat text-sm" style="color: var(--brand-navy); opacity: 0.7;">
+            © 2025 Car Trading Course. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="./public/script.js"></script>
+    <script>
+      // GSAP Page Load Animations
+      window.addEventListener('DOMContentLoaded', () => {
+        // Set initial states
+        gsap.set('nav', { opacity: 0, y: -30 });
+        gsap.set('h1', { opacity: 0, y: 50 });
+        gsap.set('.flex.gap-4', { opacity: 0, y: 30 });
+        gsap.set('.hero-section', { opacity: 0 });
+
+        // Create animation timeline
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+        tl.to('.hero-section', { 
+          opacity: 1, 
+          duration: 0.3
+        })
+        .to('nav', { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.8,
+          stagger: 0.1 
+        })
+        .to('h1', { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1,
+          ease: 'power4.out'
+        }, '-=0.4')
+        .to('.flex.gap-4', { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.8 
+        }, '-=0.6')
+        .fromTo('.hero-section img[alt="Hero"]', {
+          opacity: 0,
+          y: 80
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out'
+        }, '-=0.7')
+        .fromTo('.hero-section img[alt="Hero Secondary"]', {
+          opacity: 0,
+          y: 80
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out'
+        }, '-=0.4');
+
+        // Animate the highlight underline
+        gsap.from('.absolute.left-0.bottom-0', {
+          scaleX: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: 1.2
+        });
+      });
+      // GSAP Scroll Animations for Second Section
+      window.addEventListener('DOMContentLoaded', () => {
+        const offerSection = document.querySelector('section[style*="--brand-navy"]');
+        const offerHeading = offerSection.querySelector('h2');
+        const offerCards = offerSection.querySelectorAll('div.flex-1');
+        gsap.set(offerHeading, { opacity: 0, y: 40 });
+        gsap.set(offerCards, { opacity: 0, y: 40 });
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const tl = gsap.timeline();
+              tl.to(offerHeading, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
+                .to(offerCards, { opacity: 1, y: 0, duration: 0.7, stagger: 0.2, ease: 'power3.out' }, '-=0.4');
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.3 });
+        observer.observe(offerSection);
+      });
+      // GSAP Scroll Animations for CTA Section
+      window.addEventListener('DOMContentLoaded', () => {
+        const ctaSection = document.querySelector('section[style*="--brand-salmon"]');
+        const ctaHeading = ctaSection.querySelector('h2');
+        const ctaParagraph = ctaSection.querySelector('p.text-lg');
+        const ctaForm = ctaSection.querySelector('form');
+        const ctaFootnote = ctaSection.querySelector('p.text-sm');
+        
+        gsap.set(ctaHeading, { opacity: 0, y: 30 });
+        gsap.set(ctaParagraph, { opacity: 0, y: 20 });
+        gsap.set(ctaForm, { opacity: 0, scale: 0.95 });
+        gsap.set(ctaFootnote, { opacity: 0 });
+        
+        const ctaObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const tl = gsap.timeline();
+              tl.to(ctaHeading, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' })
+                .to(ctaParagraph, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '-=0.3')
+                .to(ctaForm, { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.2)' }, '-=0.3')
+                .to(ctaFootnote, { opacity: 1, duration: 0.4 }, '-=0.2');
+              ctaObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        
+        ctaObserver.observe(ctaSection);
+      });
+      // GSAP Scroll Animations for Pricing Section
+      window.addEventListener('DOMContentLoaded', () => {
+        const pricingSection = document.querySelector('#pricing');
+        const pricingHeading = pricingSection.querySelector('h2');
+        const pricingImage = pricingSection.querySelector('img[alt="Course Preview"]');
+        const pricingCard = pricingSection.querySelector('.bg-\\[var\\(--brand-cream\\)\\]');
+        
+        gsap.set(pricingHeading, { opacity: 0, y: 40 });
+        gsap.set(pricingImage, { opacity: 0, x: -60 });
+        gsap.set(pricingCard, { opacity: 0, x: 60 });
+        
+        const pricingObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const tl = gsap.timeline();
+              tl.to(pricingHeading, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
+                .to(pricingImage, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4')
+                .to(pricingCard, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6');
+              pricingObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.3 });
+        
+        pricingObserver.observe(pricingSection);
+      });
+    </script>
+  </body>
+</html>
